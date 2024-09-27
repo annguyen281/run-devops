@@ -24,3 +24,13 @@ steps:
     repository: 'nzod/shoppingapi'
     command: buildAndPush
     Dockerfile: $(docker-file)
+
+- task: DockerCompose@1
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'my-public-docker-hub'
+    dockerComposeFile: '**/docker-compose.yml'
+    additionalDockerComposeFiles: '**/docker-compose.override.yml'
+    action: 'Push services'
+    includeSourceTags: true
+    includeLatestTag: true

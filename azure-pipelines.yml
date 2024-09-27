@@ -17,14 +17,6 @@ variables:
   docker-file: 'Shopping/Shopping.API/Dockerfile'
 
 steps:
-- task: Docker@2
-  enabled: true
-  inputs:
-    containerRegistry: 'my-public-docker-hub'
-    repository: 'nzod/shoppingapi'
-    command: buildAndPush
-    Dockerfile: $(docker-file)
-
 - task: DockerCompose@1
   inputs:
     containerregistrytype: 'Container Registry'
